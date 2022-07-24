@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "80822339928",
+    "project_id": "wd-olx",
+    "storage_bucket": "wd-olx.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:80822339928:android:46e96a1bd8830568cdbd2d",
+        "android_client_info": {
+          "package_name": "com.winson.olx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "80822339928-pua75eqrf04hhe419fj5lf1cfcmt7lou.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.winson.olx",
+            "certificate_hash": "1a2d6c1760b09f110809cf40bf348aaf2679f790"
+          }
+        },
+        {
+          "client_id": "80822339928-tjbg6f2mp5fur0uo50qs0shnpqaem0cc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrVsyVEN6AeAOW1uD1-hSXVW-JvNkDblA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "80822339928-tjbg6f2mp5fur0uo50qs0shnpqaem0cc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
