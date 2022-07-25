@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:olx/services/phoneauth_service.dart';
 
 class PhoneAuthScreen extends StatefulWidget {
   PhoneAuthScreen({Key? key}) : super(key: key);
@@ -13,7 +14,8 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
   var countrycodeController = TextEditingController(text: '+91');
 
   var phonenoController = TextEditingController();
-  phoneAuth(number) {}
+  PhoneAuthService _service = PhoneAuthService();
+
   String counterText = '0';
   bool validate = false;
   @override
@@ -22,42 +24,42 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
       appBar: AppBar(
         elevation: 1,
         backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
+        iconTheme: const IconThemeData(color: Colors.black),
+        title: const Text(
           'Login',
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             CircleAvatar(
               radius: 30,
               backgroundColor: Colors.red.shade200,
-              child: Icon(
+              child: const Icon(
                 CupertinoIcons.person_alt_circle,
                 color: Colors.red,
                 size: 60,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
-            Text(
+            const Text(
               "Enter your Phone number",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
-            Text(
+            const Text(
               'We will Send OTP to this Number',
-              style: TextStyle(color: Colors.grey),
+              style: const TextStyle(color: Colors.grey),
             ),
             Row(
               children: [
@@ -66,10 +68,10 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
                   child: TextFormField(
                     controller: countrycodeController,
                     enabled: false,
-                    decoration: InputDecoration(labelText: 'Country'),
+                    decoration: const InputDecoration(labelText: 'Country'),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 Expanded(
@@ -92,13 +94,15 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
                       }
                     }),
                     controller: phonenoController,
-                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w700, fontSize: 20),
                     keyboardType: TextInputType.phone,
                     decoration: InputDecoration(
-                        contentPadding: EdgeInsets.only(bottom: 20, top: 21),
+                        contentPadding:
+                            const EdgeInsets.only(bottom: 20, top: 21),
                         labelText: 'Number',
                         counterText: '$counterText/10',
-                        labelStyle: TextStyle(fontSize: 16)),
+                        labelStyle: const TextStyle(fontSize: 16)),
                   ),
                 )
               ],
@@ -108,7 +112,7 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
       ),
       bottomNavigationBar: SafeArea(
           child: Padding(
-        padding: EdgeInsets.all(12),
+        padding: const EdgeInsets.all(12),
         child: AbsorbPointer(
           absorbing: validate ? false : true,
           child: ElevatedButton(
@@ -118,12 +122,21 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
                     : MaterialStateProperty.all(Colors.grey)),
             onPressed: () {
               String numb = countrycodeController.text + phonenoController.text;
-              phoneAuth(numb);
+              _service.verifyPhoneNo(numb);
               Get.dialog(
-                AlertDialog(content: Row(children: [
-                  CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Theme.of(context).primaryColor),),SizedBox(width: 20,),Text("Please Wait!")
-                ]),),barrierDismissible: false
-                );
+                  AlertDialog(
+                    content: Row(children: [
+                      CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(
+                            Theme.of(context).primaryColor),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Text("Please Wait!")
+                    ]),
+                  ),
+                  barrierDismissible: false);
             },
             child: const Padding(
               padding: EdgeInsets.all(12),

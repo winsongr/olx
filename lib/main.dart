@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:olx/screens/login_screen.dart';
 
 void main() async {
-  await Firebase.initializeApp();
-  WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
+  // WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
